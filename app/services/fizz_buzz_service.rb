@@ -1,7 +1,7 @@
 class FizzBuzzService
-  def initialize(params)
-    @original = params[:number]
-    @integer = params[:number].to_i
+  def initialize(value)
+    @original = value.to_s
+    @integer = value.to_i
   end
 
   def buzify

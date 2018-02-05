@@ -3,7 +3,7 @@ class HomeController < ApplicationController
   end
 
   def buzify
-    buzz, number, status = FizzBuzzService.new({number: params[:number]}).buzify
+    buzz, number, status = FizzBuzzService.new(params[:number]).buzify
     render json: {buzz: buzz, number: number}, status: status
   end
 end

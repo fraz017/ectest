@@ -16,6 +16,7 @@ RSpec.describe 'Fizz Buzz Method' do
             it 'returns empty string' do
                 expect(JSON.parse(response.body)).not_to be_nil
                 expect(JSON.parse(response.body)["buzz"]).to eq("")
+                expect(JSON.parse(response.body)["number"]).to eq("1")
             end
         end
 
@@ -30,6 +31,7 @@ RSpec.describe 'Fizz Buzz Method' do
             it 'returns empty string' do
                 expect(JSON.parse(response.body)).not_to be_nil
                 expect(JSON.parse(response.body)["buzz"]).to eq("Fizz")
+                expect(JSON.parse(response.body)["number"]).to eq("3")
             end
         end
 
@@ -44,6 +46,7 @@ RSpec.describe 'Fizz Buzz Method' do
             it 'returns empty string' do
                 expect(JSON.parse(response.body)).not_to be_nil
                 expect(JSON.parse(response.body)["buzz"]).to eq("Buzz")
+                expect(JSON.parse(response.body)["number"]).to eq("5")
             end
         end
 
@@ -58,6 +61,7 @@ RSpec.describe 'Fizz Buzz Method' do
             it 'returns empty string' do
                 expect(JSON.parse(response.body)).not_to be_nil
                 expect(JSON.parse(response.body)["buzz"]).to eq("FizzBuzz")
+                expect(JSON.parse(response.body)["number"]).to eq("15")
             end
         end
     end
@@ -70,6 +74,12 @@ RSpec.describe 'Fizz Buzz Method' do
           it 'returns status code 422' do
             expect(response).to have_http_status(422)
           end
+
+          it 'returns empty body' do
+            expect(JSON.parse(response.body)).not_to be_nil
+            expect(JSON.parse(response.body)["buzz"]).to eq(nil)
+            expect(JSON.parse(response.body)["number"]).to eq(nil)
+          end
         end
     end
 
@@ -80,6 +90,12 @@ RSpec.describe 'Fizz Buzz Method' do
         context 'when no number is passed' do
           it 'returns status code 422' do
             expect(response).to have_http_status(422)
+          end
+
+          it 'returns empty body' do
+            expect(JSON.parse(response.body)).not_to be_nil
+            expect(JSON.parse(response.body)["buzz"]).to eq(nil)
+            expect(JSON.parse(response.body)["number"]).to eq(nil)
           end
         end
     end
